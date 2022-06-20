@@ -1,0 +1,9 @@
+POST http://localhost:3000/todo/me
+content-type: application/json
+
+{
+    "name": "Akash",
+    "email": "akashlinux2003@gmail.com",
+    "password": "akash"
+}
+
