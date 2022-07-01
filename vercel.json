@@ -5,25 +5,16 @@
     },
     "builds": [
         {
-            "src": "package.json",
-            "use": "@vercel/node"
+          "src": "dist/apps/server/main.js",
+          "use": "@vercel/node"
         }
-    ],
-    "routes": [
+      ],
+      "routes": [
         {
-            "src": "/(.*)",
-            "dest": "package.json",
-            "methods": [
-                "GET",
-                "POST",
-                "PUT",
-                "DELETE"
-        
-            ]
-            
+          "src": "/(.*)",
+          "dest": "dist/apps/server/main.js"
         }
-        
-    ]
+      ]
     
     
 }
