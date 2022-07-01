@@ -13,20 +13,12 @@ export class TodoService {
     return userData;
   }
 
-  async addUser(user: any) {
+  async addUser(user: User) {
     const userData = await this.prisma.user.create({
-      include: {
-        todo: true,
-      },
       data: {
         name: user.name,
         email: user.email,
         password: user.password,
-        todo: {
-          create: {
-            content: user.content,
-          },
-        },
       },
     });
     return userData;
