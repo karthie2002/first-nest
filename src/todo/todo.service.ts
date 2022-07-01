@@ -8,7 +8,7 @@ import { UpdateTodoDto } from './dto/update-todo.dto';
 @Injectable()
 export class TodoService {
   constructor(private prisma: PrismaService) {}
-
+  
   async findAll() {
     const userData = await this.prisma.user.findMany({
       select: { name: true, id: true, todo: true },
