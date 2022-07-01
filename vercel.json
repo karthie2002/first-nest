@@ -3,18 +3,12 @@
     "env": {
         "DATABASE_URL": "mongodb+srv://Karthi:karthi@cluster0.txoxi.mongodb.net/firstNest?retryWrites=true&w=majority"
     },
-    "builds": [
-        {
-          "src": "dist/apps/server/main.js",
-          "use": "@vercel/node"
-        }
-      ],
-      "routes": [
-        {
-          "src": "/(.*)",
-          "dest": "dist/apps/server/main.js"
-        }
-      ]
-    
+    "name": "first-nest",
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/apps/server/main.js"
+    }
+  ]   
     
 }
