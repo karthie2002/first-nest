@@ -6,6 +6,7 @@ import {
   HttpCode,
   HttpStatus,
   Param,
+  Patch,
   Post,
 } from '@nestjs/common';
 import { Todo, User } from '@prisma/client';
@@ -43,5 +44,9 @@ export class TodoController {
   @Get(':name')
   findTask(@Param('name') name: any) {
     return this.todoService.findTask(name);
+  }
+  @Patch('updateName')
+  updateTask(@Body() todo: any) {
+    return this.todoService.updateTask(todo);
   }
 }

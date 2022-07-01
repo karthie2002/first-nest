@@ -77,4 +77,14 @@ export class TodoService {
     });
     return todoData;
   }
+  async updateTask(todo: any) {
+    const updateUser = await this.prisma.todo.update({
+      where: {
+        id: todo.id,
+      },
+      data: {
+        content: todo.content,
+      },
+    });
+  }
 }
