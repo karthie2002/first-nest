@@ -5,7 +5,7 @@
     },
     "builds": [
         {
-            "src": "src/main.ts",
+            "src": "package.json",
             "use": "@vercel/node"
         }
     ],
