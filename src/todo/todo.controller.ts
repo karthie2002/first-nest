@@ -45,7 +45,7 @@ export class TodoController {
   findTask(@Param('name') name: any) {
     return this.todoService.findTask(name);
   }
-  @Patch('updateName')
+  @Patch('updateTodo')
   updateTask(@Body() todo: any) {
     return this.todoService.updateTask(todo);
   }
