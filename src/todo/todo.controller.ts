@@ -11,7 +11,7 @@ import {
 import { Todo, User } from '@prisma/client';
 import { TodoService } from './todo.service';
 
-@Controller('todo')
+@Controller()
 export class TodoController {
   constructor(private todoService: TodoService) {}
 
