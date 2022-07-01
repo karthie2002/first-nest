@@ -86,5 +86,6 @@ export class TodoService {
         content: todo.content,
       },
     });
+    return updateUser;
   }
 }
