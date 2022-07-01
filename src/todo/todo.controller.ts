@@ -21,7 +21,7 @@ export class TodoController {
   }
   @HttpCode(HttpStatus.ACCEPTED)
   @Post('me')
-  addUser(@Body() user: User) {
+  addUser(@Body() user: any) {
     return this.todoService.addUser(user);
   }
   @Get('findOne')
