@@ -15,7 +15,7 @@ let TodoModule = class TodoModule {
 TodoModule = __decorate([
     (0, common_1.Module)({
         providers: [todo_service_1.TodoService],
-        controllers: [todo_controller_1.TodoController]
+        controllers: [todo_controller_1.TodoController],
     })
 ], TodoModule);
 exports.TodoModule = TodoModule;

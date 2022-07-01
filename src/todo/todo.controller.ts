@@ -9,7 +9,10 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { Todo, User } from '@prisma/client';
+import { CreateTodoDto } from './dto/create-todo.dto';
+import { CreateUserDto } from './dto/create-user.dto';
+import { DeleteTodoDto } from './dto/delete-todo.dto';
+import { UpdateTodoDto } from './dto/update-todo.dto';
 import { TodoService } from './todo.service';
 
 @Controller()
@@ -20,33 +23,40 @@ export class TodoController {
   findAll() {
     return this.todoService.findAll();
   }
+
   @HttpCode(HttpStatus.ACCEPTED)
-  @Post('me')
-  addUser(@Body() user: any) {
+  @Post('addUser')
+  addUser(@Body() user: CreateUserDto) {
     return this.todoService.addUser(user);
   }
+
   @Get('findOne')
   findOne(@Body() name: any) {
     return this.todoService.findOne(name);
   }
+
   @Delete('delete')
-  delete(@Body() id: any) {
+  delete(@Body() id: DeleteTodoDto) {
     return this.todoService.delete(id);
   }
+
   @Post('addTodo')
-  addTodo(@Body() todo: Todo) {
+  addTodo(@Body() todo: CreateTodoDto) {
     return this.todoService.addTodo(todo);
   }
+
   @Get('findId/:name')
   findId(@Param('name') name: any) {
     return this.todoService.findId(name);
   }
+
   @Get(':name')
-  findTask(@Param('name') name: any) {
-    return this.todoService.findTask(name);
+  findTodo(@Param('name') name: any) {
+    return this.todoService.findTodo(name);
   }
+
   @Patch('updateTodo')
-  updateTask(@Body() todo: any) {
+  updateTask(@Body() todo: UpdateTodoDto) {
     return this.todoService.updateTask(todo);
   }
 }

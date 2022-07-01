@@ -25,18 +25,10 @@ let TodoService = class TodoService {
     }
     async addUser(user) {
         const userData = await this.prisma.user.create({
-            include: {
-                todo: true,
-            },
             data: {
                 name: user.name,
                 email: user.email,
                 password: user.password,
-                todo: {
-                    create: {
-                        content: user.content,
-                    },
-                },
             },
         });
         return userData;
@@ -58,7 +50,7 @@ let TodoService = class TodoService {
         });
         return userData;
     }
-    async findTask(name) {
+    async findTodo(name) {
         const id = await this.findId(name);
         const userData = await this.prisma.todo.findMany({
             where: {
@@ -89,6 +81,17 @@ let TodoService = class TodoService {
             },
         });
         return todoData;
+    }
+    async updateTask(todo) {
+        const updateUser = await this.prisma.todo.update({
+            where: {
+                id: todo.id,
+            },
+            data: {
+                content: todo.content,
+            },
+        });
+        return updateUser;
     }
 };
 TodoService = __decorate([

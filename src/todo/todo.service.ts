@@ -1,10 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { Todo, User } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { CreateTodoDto } from './dto/create-todo.dto';
+import { CreateUserDto } from './dto/create-user.dto';
+import { DeleteTodoDto } from './dto/delete-todo.dto';
+import { UpdateTodoDto } from './dto/update-todo.dto';
 
 @Injectable()
 export class TodoService {
   constructor(private prisma: PrismaService) {}
+
   async findAll() {
     const userData = await this.prisma.user.findMany({
       select: { name: true, id: true, todo: true },
@@ -13,7 +17,7 @@ export class TodoService {
     return userData;
   }
 
-  async addUser(user: any) {
+  async addUser(user: CreateUserDto) {
     const userData = await this.prisma.user.create({
       data: {
         name: user.name,
@@ -43,9 +47,8 @@ export class TodoService {
     return userData;
   }
 
-  async findTask(name: any) {
+  async findTodo(name: any) {
     const id: any = await this.findId(name);
-    //console.log(id);
     const userData = await this.prisma.todo.findMany({
       where: {
         userId: id.id,
@@ -58,13 +61,14 @@ export class TodoService {
     return userData;
   }
 
-  async delete(id: any) {
+  async delete(id: DeleteTodoDto) {
     const userData = await this.prisma.user.delete({
       where: id,
     });
     return userData;
   }
-  async addTodo(todo: Todo) {
+
+  async addTodo(todo: CreateTodoDto) {
     const todoData = await this.prisma.todo.create({
       data: {
         content: todo.content,
@@ -77,7 +81,8 @@ export class TodoService {
     });
     return todoData;
   }
-  async updateTask(todo: any) {
+
+  async updateTask(todo: UpdateTodoDto) {
     const updateUser = await this.prisma.todo.update({
       where: {
         id: todo.id,

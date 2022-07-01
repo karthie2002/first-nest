@@ -1,4 +1,7 @@
-import { Todo, User } from '@prisma/client';
+import { CreateTodoDto } from './dto/create-todo.dto';
+import { CreateUserDto } from './dto/create-user.dto';
+import { DeleteTodoDto } from './dto/delete-todo.dto';
+import { UpdateTodoDto } from './dto/update-todo.dto';
 import { TodoService } from './todo.service';
 export declare class TodoController {
     private todoService;
@@ -6,19 +9,18 @@ export declare class TodoController {
     findAll(): Promise<{
         name: string;
         id: string;
-        todo: Todo[];
+        todo: import(".prisma/client").Todo[];
     }[]>;
-    addUser(user: User): Promise<User & {
-        todo: Todo[];
-    }>;
-    findOne(name: any): Promise<User>;
-    delete(id: any): Promise<User>;
-    addTodo(todo: Todo): Promise<Todo>;
+    addUser(user: CreateUserDto): Promise<import(".prisma/client").User>;
+    findOne(name: any): Promise<import(".prisma/client").User>;
+    delete(id: DeleteTodoDto): Promise<import(".prisma/client").User>;
+    addTodo(todo: CreateTodoDto): Promise<import(".prisma/client").Todo>;
     findId(name: any): Promise<{
         id: string;
     }>;
-    findTask(name: any): Promise<{
+    findTodo(name: any): Promise<{
         id: string;
         content: string;
     }[]>;
+    updateTask(todo: UpdateTodoDto): Promise<import(".prisma/client").Todo>;
 }
