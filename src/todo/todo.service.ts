@@ -12,7 +12,7 @@ export class TodoService {
   async findAll() {
     const userData = await this.prisma.user.findMany({
       select: { name: true, id: true, todo: true },
-      orderBy: { name: 'desc' },
+      orderBy: { name: 'asc' },
     });
     return userData;
   }
