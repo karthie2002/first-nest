@@ -14,6 +14,7 @@ export class AuthService {
     private config: ConfigService,
     private jwt: JwtService,
   ) {}
+
   async signIn(dto: SignInDto) {
     const user = await this.prisma.user.findUnique({
       where: {
@@ -34,6 +35,7 @@ export class AuthService {
       throw error;
     }
   }
+  
   async signUp(dto: AuthDto) {
     const hash = await argon.hash(dto.password);
 
