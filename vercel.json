@@ -21,7 +21,7 @@
       "continue": true
     },
     {
-      "src": "/auth/signin",
+      "src": "/auth",
       "methods": ["POST"],
       "dest": "src/main.ts",
       "headers": {
