@@ -14,11 +14,10 @@
     {
       "headers": {
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-        "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept,append,delete,entries,foreach,get,has,keys,set,values,Authorization"
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS"
       },
-      "src": "/.*",
-      "dest": "/index.js"
+      "src": "/(.*)",
+      "dest": "src/main.ts"
     }
   ]
 }
