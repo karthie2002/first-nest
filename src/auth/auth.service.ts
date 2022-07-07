@@ -30,12 +30,14 @@ export class AuthService {
         throw new ForbiddenException('Incorrect Password');
       }
 
+      delete dto.password;
+      delete user.password;
       return this.signToken(user.id, user.email);
     } catch (error) {
       throw error;
     }
   }
-  
+
   async signUp(dto: AuthDto) {
     const hash = await argon.hash(dto.password);
 
@@ -47,6 +49,9 @@ export class AuthService {
           password: hash,
         },
       });
+
+      delete dto.password;
+      delete user.password;
       return this.signToken(user.id, user.email);
     } catch (error) {
       if (error instanceof PrismaClientKnownRequestError) {
