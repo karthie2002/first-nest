@@ -8,7 +8,13 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [PrismaModule, TodoModule, ConfigModule.forRoot({isGlobal:true}), AuthModule, UsersModule],
+  imports: [
+    PrismaModule,
+    TodoModule,
+    ConfigModule.forRoot({ isGlobal: true }),
+    AuthModule,
+    UsersModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
