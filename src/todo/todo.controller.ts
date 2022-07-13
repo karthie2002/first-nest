@@ -8,13 +8,16 @@ import {
   Param,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
+import { JwtGuard } from 'src/auth/guard/jwt.guard';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { CreateUserDto } from './dto/create-user.dto';
 import { DeleteTodoDto } from './dto/delete-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
 import { TodoService } from './todo.service';
 
+@UseGuards(JwtGuard)
 @Controller()
 export class TodoController {
   constructor(private todoService: TodoService) {}
