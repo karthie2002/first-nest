@@ -47,11 +47,10 @@ export class TodoService {
     return userData;
   }
 
-  async findTodo(name: any) {
-    const id: any = await this.findId(name);
+  async findTodo(id: any) {
     const userData = await this.prisma.todo.findMany({
       where: {
-        userId: id.id,
+        userId: id,
       },
       select: {
         content: true,

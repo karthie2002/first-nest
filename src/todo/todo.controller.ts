@@ -53,9 +53,9 @@ export class TodoController {
     return this.todoService.findId(name);
   }
 
-  @Get(':name')
-  findTodo(@Param('name') name: any) {
-    return this.todoService.findTodo(name);
+  @Get(':id')
+  findTodo(@Param('id') id: any) {
+    return this.todoService.findTodo(id);
   }
 
   @Patch('updateTodo')
