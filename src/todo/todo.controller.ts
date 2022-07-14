@@ -17,7 +17,7 @@ import { DeleteTodoDto } from './dto/delete-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
 import { TodoService } from './todo.service';
 
-
+@UseGuards(JwtGuard)
 @Controller()
 export class TodoController {
   constructor(private todoService: TodoService) {}
