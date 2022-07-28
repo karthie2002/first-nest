@@ -61,7 +61,7 @@ export class TodoService {
   }
 
   async delete(id: DeleteTodoDto) {
-    const userData = await this.prisma.user.delete({
+    const userData = await this.prisma.todo.delete({
       where: id,
     });
     return userData;
